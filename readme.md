@@ -8,3 +8,4 @@
 8. git checkout branchName/commit hash
 9. git branch - all the branches
 10. git checkout -b "branch-name"
+11. git merge <branch-name> - merge any other branch to your current branch
