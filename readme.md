@@ -4,4 +4,7 @@
 4. git commit -m "message" - used for commit staged file/files
 5. git reset head - for unstaging all the files
 6. git reset <filename> - for unstaging single file
-git push - for pushing our changes to remote repo
+7. git push - for pushing our changes to remote repo
+8. git checkout branchName/commit hash
+9. git branch - all the branches
+10. git checkout -b "branch-name"
