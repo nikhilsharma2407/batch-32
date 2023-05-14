@@ -1,0 +1,11 @@
+div span{
+    background-color: aqua;
+}
+
+div>span{
+    background-color: purple;
+}
+
+.row:nth-child(even){
+    background-color: grey;
+}
