@@ -19,7 +19,6 @@ export default class ComponentA extends Component {
         const greet = () => {
             alert('Hello ' + name)
         }
-
         // function updateTitle(){
 
         //     this.setState({title:'Learning React is Fun!!!'})
