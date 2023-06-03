@@ -1,26 +1,32 @@
-// const course = {
-//     name: "Full Stack", id: "FSRNL",
-//     mentor: {
-//         mentorName: "Nikhil",
-//         mentorID:101
-//     }
-// }
+const promise = Promise.resolve("api data");
+
+// promise.then(data=>{
+//     console.log(data);
+//     setState(data);
+//     apiCall(data).then(data2=>{
+//         console.log(data2);
+//     });
+// });
+
+const fn = async()=>{
+    const data = await promise;
+    // console.log(data);
+    return data
+    // setState(data);
+    // const data2 = await apiCall(data);
+    // console.log(data2);
+}
+console.log(fn()) 
+
+// {} -> brackets
+// () -> parenthesis
 
 
-// const { name, id, mentor } = course
-
-// // renaming
-// // const courseName = course.name;
-// const { name: courseName } = course;
-
-// console.log(courseName);
-
-// // nested destructing with renaming
-// const { mentor: { mentorName:fullName,mentorID } } = course;
-// console.log(fullName);
-
-
-const arr = [1,2];
-
-const [num1,num2,num3,num4] = arr;
-console.log(num1, num2, num3, num4);
+// IIFE  - Immediately Invoked Function Expression
+// (async()=>{
+//     const data = await promise;
+//     console.log(data);
+//     // setState(data);
+//     // const data2 = await apiCall(data);
+//     // console.log(data2);
+// })()
