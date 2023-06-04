@@ -1,0 +1,13 @@
+.flex-container{
+    display: flex;
+    margin: 5px;
+    /* padding: 5px; */
+    width: 250px !important;
+    justify-content: space-around;;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}

@@ -1,15 +1,19 @@
 import React from 'react'
-
+import { Button, Card } from 'react-bootstrap';
+import "./style.css"
 function User(props) {
     console.log(props);
     const { userData } = props
     return (
-        // style={{display:'flex', alignItems:'center'}}
-        // <div style={{display:'flex', alignItems:'center'}}>
-        <div>
-            <span>{userData.firstName}</span>
-            <img src={userData.picture} height="100px" width="100px" />
-        </div>
+        <Card className='flex-container'>
+            <Card.Body>
+                <img src={userData.picture} height="100px" width="100px" />
+                <div className='info'>
+                    <div>{userData.firstName}</div>
+                    <Button variant="outline-primary">Add Friend</Button>
+                </div>
+            </Card.Body>
+        </Card>
     )
 }
 
