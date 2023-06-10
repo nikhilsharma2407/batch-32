@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import User from '../User';
+import { Container, Row } from 'react-bootstrap';
 function Users() {
     const URL = 'https://dummyapi.io/data/v1/user?limit=10';
     const [users, setUsers] = useState([])
@@ -28,9 +29,13 @@ function Users() {
                 </div>
             })}
              */}
-            {users.map(user => {
-                return <User userData={user} key={user.id}/>
-            })}
+            <Container fluid>
+                <Row>
+                    {users.map(user => {
+                        return <User userData={user} key={user.id} />
+                    })}
+                </Row>
+            </Container>
 
 
         </>

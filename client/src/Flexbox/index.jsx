@@ -1,9 +1,10 @@
 import React from 'react'
-import "./style.css"
+import "./style.scss"
 
 function Flexbox() {
   return (
-    <div className="flex-container">
+    <div className="flexbox">
+      <div className='flexbox--container'>
         <div className='flex-item'>1</div>
         <div className='flex-item'>2</div>
         <div className='flex-item'>3</div>
@@ -14,6 +15,7 @@ function Flexbox() {
         <div className='flex-item'>8</div>
         <div className='flex-item'>9</div>
         <div className='flex-item'>10</div>
+      </div>
     </div>
   )
 }
