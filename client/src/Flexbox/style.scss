@@ -1,4 +1,3 @@
-
 .flexbox{
     &--container {
         border: 2px dashed black;
@@ -7,7 +6,7 @@
         flex-direction: column;
         padding: 5px;
     }
-    
+
     .flex-item {
         height: 50px;
         width: 50px;
@@ -16,9 +15,47 @@
         justify-content: center;
         align-items: center;
     }
-    
-    .flex-item:nth-child(even) {
-        align-self: end;
+
+    .flex-item:nth-child(3n+1) {
+        align-self: flex-start;
     }
-   
+
+    .flex-item:nth-child(3n+2) {
+        align-self: center;
+    }
+
+    .flex-item:nth-child(3n) {
+        align-self: flex-end;
+    }
+
 }
+
+
+// .flexbox .flexbox--container {
+//     border: 2px dashed black;
+//     display: flex;
+//     height: 650px;
+//     flex-direction: column;
+//     padding: 5px;
+// }
+
+// .flexbox .flex-item {
+//     height: 50px;
+//     width: 50px;
+//     border: red 1px solid;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
+
+// .flexbox .flex-item:nth-child(3n+1) {
+//     align-self: flex-start;
+// }
+
+// .flexbox .flex-item:nth-child(3n+2) {
+//     align-self: center;
+// }
+
+// .flexbox .flex-item:nth-child(3n) {
+//     align-self: flex-end;
+// }

@@ -30,3 +30,18 @@ console.log(fn())
 //     // const data2 = await apiCall(data);
 //     // console.log(data2);
 // })()
+
+
+<section>
+        <Link to=''>Home</Link>
+        <br />
+        <Link to='flex'>Flexbox</Link>
+        <br />
+        <Link to='routing'>Routing</Link>
+        <br />
+        {/* <Link to='parent'>Routing</Link>
+        <Link to='/parent/child-route'>Child route Absolute</Link>
+        <br /> */}
+        <a href='http://localhost:3000/routing'>Routing Anchor tag</a>
+
+      </section>

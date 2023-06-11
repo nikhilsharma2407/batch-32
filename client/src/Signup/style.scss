@@ -1,0 +1,5 @@
+@import "../common.scss";
+
+.signup-form {
+    @include shadow-mixin(grey);
+}
