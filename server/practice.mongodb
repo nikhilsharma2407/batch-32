@@ -1,0 +1,146 @@
+// MongoDB Playground
+// To disable this template go to Settings | MongoDB | Use Default Template For Playground.
+// Make sure you are connected to enable completions and to be able to run a playground.
+// Use Ctrl+Space inside a snippet or a string literal to trigger completions.
+
+// Select the database to use.
+use('mongodbVSCodePlaygroundDB');
+
+// The drop() command destroys all data from a collection.
+// Make sure you run it against the correct database and collection.
+// db.sales.drop();
+
+// // Insert a few documents into the sales collection.
+// db.sales.insertMany([
+//   { '_id': 1, 'item': 'abc', 'price': 10, 'quantity': 2, 'date': new Date('2014-03-01T08:00:00Z') },
+//   { '_id': 2, 'item': 'jkl', 'price': 20, 'quantity': 1, 'date': new Date('2014-03-01T09:00:00Z') },
+//   { '_id': 3, 'item': 'xyz', 'price': 5, 'quantity': 10, 'date': new Date('2014-03-15T09:00:00Z') },
+//   { '_id': 4, 'item': 'xyz', 'price': 5, 'quantity':  20, 'date': new Date('2014-04-04T11:21:39.736Z') },
+//   { '_id': 5, 'item': 'abc', 'price': 10, 'quantity': 10, 'date': new Date('2014-04-04T21:23:13.331Z') },
+//   { '_id': 6, 'item': 'def', 'price': 7.5, 'quantity': 5, 'date': new Date('2015-06-04T05:08:13Z') },
+//   { '_id': 7, 'item': 'def', 'price': 7.5, 'quantity': 10, 'date': new Date('2015-09-10T08:43:00Z') },
+//   { '_id': 8, 'item': 'abc', 'price': 10, 'quantity': 5, 'date': new Date('2016-02-06T20:20:13Z') },
+// ]);
+
+
+// find all entries
+
+// db.sales.find();
+
+db.sales.find({},{_id:0,date:0});
+
+
+
+// find all entries where item is "abc";
+db.sales.find({item:"abc"},{_id:0,date:0});
+
+// Comparison Operators
+
+//  $eq - to check equality
+//  $lt - <
+//  $gt - >
+//  $lte - <=
+//  $gte - >=
+
+
+// $or:[{condition1},{condition2},...,condition-n];
+
+// find all entries where item is "abc" or "xyz";
+db.sales.find({
+  $or:[
+    {item:"abc"},
+    {item:"xyz"}
+  ]
+},{_id:0,date:0});
+
+// $and 
+
+// db.sales.find({
+//     $and:[
+//       { price: { $gte:10 } },
+//       { quantity:{ $lte:5 } }
+//     ]
+//   }
+//   )
+// 
+
+db.sales.find({ price:{$gte:10}, quantity:{$lte:5} });
+
+db.sales.find({_id:101});
+db.sales.findOne({item:101});
+// db.sales.insertOne({_id:1,item:"xyz"})
+
+// Nested queries
+db.sales.findOne({"mobile.os":"android"})
+
+// 1st param filter - 2nd param - projection
+
+// CRUD - create, read, update, delete;
+// 1st param - filter
+// jkl
+db.sales.updateOne({
+},{
+  $set:{quantity:3},
+},
+{upsert:true}
+);
+
+// $mul - multiply, $inc - increment
+
+
+// db.sales.find({item:"jkl"})
+
+db.sales.updateMany({
+  quantity:{$lt:5}
+},{
+  $inc:{quantity:-10}
+});
+
+
+// // give 10% discount for all items priced above 10
+db.sales.updateMany({
+  price:{$gte:10}
+},{
+  $mul:{price:0.9}
+})
+
+db.sales.find({});
+
+
+// db.sales.insertOne({ _id:9,"item":["abc","def"]});
+// Array operators
+
+// $pop(1/-1) -> 1/no value - removes the last element from array, -1 ->remove the first elemet
+// $push -> push element at the end of the array
+// $pull -> remove a matching item from array
+// $pullAll -> takes array as argument, and removes all the items 
+// $addToSet -> pushes element at last if it doesn't exist in array
+
+db.sales.find({_id:9});
+
+// remove last element
+// db.sales.updateOne({_id:9},{
+//   $pop:{item:1}
+// })
+
+// remove first element
+// db.sales.updateOne({_id:9},{
+//   $pop:{item:-1}
+// })
+
+// db.sales.updateOne({_id:9},{$push:{item:"xyz"}})
+// db.sales.updateOne({_id:9},{$push:{item:"abc"}})
+
+// db.sales.updateOne({_id:9},{$pull:{item:"def"}})
+// db.sales.updateOne({_id:9},{$pullAll:{item:["abc","xyz"]}});
+
+
+db.sales.updateOne({_id:9},{$addToSet:{item:"xyz"}})
+db.sales.updateOne({_id:9},{$push:{item:"abc"}})
+
+
+
+// db.sales.deleteMany({quantity:{$lte:5}})
+// db.sales.insertOne({_id:9,mobile:{os:"android"},price:50_000,quantity:1});
+
+// db.sales.findOne({_id:9})
