@@ -9,11 +9,15 @@ const errorHandler = require('./utils/errorHandler');
 const cookieParser = require('cookie-parser');
 // connect to DB 
 const db = require('./dbConnection');
+const cors = require('cors')
 
 // This middleware will allow us to read the body of the contents shared with req
 app.use(express.json());
 app.use(cookieParser());
-
+app.use(cors({
+    origin:'http://localhost:3000',
+    credentials:true
+}))
 app.use(requestLogger);
 
 app.use('/router',router);

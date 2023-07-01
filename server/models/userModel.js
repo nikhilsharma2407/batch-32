@@ -20,6 +20,9 @@ const userSchema = new Schema({
     profilePicture: {
         type: String,
     },
+    secret: {
+        type: String,
+    },
     friendList: [String]
 
 });

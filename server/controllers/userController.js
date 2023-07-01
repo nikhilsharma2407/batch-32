@@ -3,15 +3,24 @@ const UserModel = require('../models/userModel');
 const { generateToken, verifyToken } = require('../utils/jwtUtils');
 const { generatePasswordHash, verifyPassword } = require('../utils/passwordUtils');
 const { responseCreator, errorCreator } = require('../utils/responseCreator');
+const { generateQRcode, verifyOTP } = require('../utils/totpUtils');
 
 const signup = async (req, res, next) => {
     try {
         const { password, ...data } = req.body;
         const pwdHash = await generatePasswordHash(password);
         data.password = pwdHash
+        const { qrcode, secret } = await generateQRcode();
+        data.secret = secret
+
         const userData = await UserModel.createUser(data);
         res.status(201);
-        res.send(responseCreator('Account created successfully', userData));
+        res.send(responseCreator('Account created successfully', qrcode));
+        // res.send(`
+        //     <h1>Two Factor authentication setup</h1>
+        //     <h2>Please scan the QR code with Google Authenticator</h2>
+        //     <img src=${qrcode}>
+        // `)
     } catch (error) {
         next(error)
     }
@@ -26,7 +35,7 @@ const signup = async (req, res, next) => {
 const login = async (req, res, next) => {
     try {
         const { username, password } = req.body;
-        const { password: pwdHash, ...user } = await UserModel.findUser(username);
+        const { password: pwdHash, secret, ...user } = await UserModel.findUser(username);
 
         // password validation
         const isPasswordValid = verifyPassword(password, pwdHash);
@@ -55,11 +64,62 @@ const loginWithCookie = async (req, res, next) => {
     try {
         const { token } = req.cookies;
         const { username } = verifyToken(token);
-        const { password, ...user } = await UserModel.findUser(username);
+        const { password, secret, ...user } = await UserModel.findUser(username);
         res.send(responseCreator(`${username} logged in successfully with cookie!!!!`, user))
     } catch (error) {
         next(error)
     }
 }
 
-module.exports = { signup, login, loginWithCookie }
+const resetPassword = async (req, res, next) => {
+    try {
+        const { otp, username, password: pwd } = req.body;
+
+        const user = await UserModel.findUser(username);
+        const { secret } = user;
+
+        const isOTPValid = verifyOTP(otp, secret);
+        if (isOTPValid) {
+            // reset the password
+            const password = await generatePasswordHash(pwd);
+            const userUpdated = await UserModel.updateOne({ username }, { $set: { password } });
+            if (userUpdated.modifiedCount) {
+                res.send(responseCreator('Password reset successfully!!!'))
+            } else {
+                errorCreator('New password cannot be same as old password', 403);
+            }
+        } else {
+            errorCreator('Invalid OTP', 403);
+        }
+    } catch (error) {
+        next(error)
+    }
+}
+
+const addFriend = async (req, res, next) => {
+    try {
+        const { username } = res.locals.user;
+        const { name, id } = req.body;
+        const data = await UserModel.updateFriendList(username, id);
+        if (data) {
+            res.send(responseCreator(`You're now friend with ${name}`, data.friendList))
+        }
+    } catch (error) {
+        next(error)
+    }
+}
+
+const removeFriend = async (req, res, next) => {
+    try {
+        const { username } = res.locals.user;
+        const { name, id } = req.body;
+        const data = await UserModel.updateFriendList(username, id, false);
+        if (data) {
+            res.send(responseCreator(`You're no longer friend with ${name}`, data.friendList))
+        }
+    } catch (error) {
+        next(error)
+    }
+}
+
+module.exports = { signup, login, loginWithCookie, resetPassword, addFriend, removeFriend }

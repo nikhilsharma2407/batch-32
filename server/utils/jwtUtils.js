@@ -3,8 +3,8 @@ const { errorCreator } = require('./responseCreator');
 
 const SECRET_KEY = 'MySecretKey';
 
-const generateToken = (data) => {
-    return sign(data, SECRET_KEY, { expiresIn: '1h' });
+const generateToken = (data,time='1h') => {
+    return sign(data, SECRET_KEY, { expiresIn: time });
 };
 
 const verifyToken = (token) => {
