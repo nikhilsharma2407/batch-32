@@ -38,8 +38,9 @@ const login = async (req, res, next) => {
         const { password: pwdHash, secret, ...user } = await UserModel.findUser(username);
 
         // password validation
-        const isPasswordValid = verifyPassword(password, pwdHash);
-        if (isPasswordValid) {
+        const isPasswordValid = await verifyPassword(password, pwdHash);
+        console.log({ isPasswordValid });
+        if (isPasswordValid === true) {
             // login successful
             const token = generateToken(user);
             res.cookie('token', token, { httpOnly: true, maxAge: 3600_000 })

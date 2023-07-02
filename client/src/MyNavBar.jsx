@@ -18,6 +18,7 @@ function MyNavBar() {
             <Nav.Link as={Link} to='/'>Home</Nav.Link>
             <Nav.Link as={Link} to='flex'>Flex</Nav.Link>
             <Nav.Link as={Link} to='routing?search=abcd'>Routing</Nav.Link>
+            <Nav.Link as={Link} to='/counter'>Redux</Nav.Link>
             {/* <NavDropdown title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action4">

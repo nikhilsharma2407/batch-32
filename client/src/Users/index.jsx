@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import User from '../User';
 import { Container, Row } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 function Users() {
     const URL = 'https://dummyapi.io/data/v1/user?limit=10';
     const [users, setUsers] = useState([])
+
+    const { friendList } = useSelector(state => state)
 
     useEffect(() => {
         (async () => {
@@ -32,7 +35,7 @@ function Users() {
             <Container fluid>
                 <Row>
                     {users.map(user => {
-                        return <User userData={user} key={user.id} />
+                        return <User userData={user} key={user.id} isFriend={friendList.includes(user.id)} />
                     })}
                 </Row>
             </Container>

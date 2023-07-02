@@ -5,9 +5,15 @@ import Form from 'react-bootstrap/Form';
 import { Container, Row, Col, Card } from 'react-bootstrap'
 import { Link } from "react-router-dom"
 import { loginAPI } from '../apiUtils';
+import { useDispatch } from "react-redux"
 import './style.scss'
+import { loginActionCreator, resetPasswordActionCreator } from '../reducers/userReducer';
 
 function Login() {
+
+  const dispatch = useDispatch();
+
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,10 +21,16 @@ function Login() {
   const [showResetForm, setshowResetForm] = useState(false);
 
 
-  const login = async() => {
+  const login = () => {
     const payload = { username, password };
-    const { data } = await loginAPI(payload);
-    console.log(data);
+    // const { data } = await loginAPI(payload);
+    // console.log(data);
+    dispatch(loginActionCreator(payload))
+  }
+
+  const resetPassword = ()=>{
+    const payload = { username, password, otp };
+    dispatch(resetPasswordActionCreator(payload))
   }
   return (
     <Container fluid>
@@ -58,7 +70,7 @@ function Login() {
                 <Form.Label>OTP </Form.Label>
                 <Form.Control type="number" placeholder="code from Google Authenticator" onChange={e => setOtp(e.target.value)} />
               </Form.Group>
-              <Button variant="primary" type="submit" disabled={!(username.length > 0 && password.length > 0 && otp.length)}>
+              <Button variant="primary" onClick={resetPassword} disabled={!(username.length > 0 && password.length > 0 && otp.length)}>
                 Reset Password
               </Button>
             </Card.Body>

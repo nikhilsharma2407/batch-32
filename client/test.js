@@ -32,7 +32,7 @@ console.log(fn())
 // })()
 
 
-<section>
+{/* <section>
         <Link to=''>Home</Link>
         <br />
         <Link to='flex'>Flexbox</Link>
@@ -42,6 +42,3 @@ console.log(fn())
         {/* <Link to='parent'>Routing</Link>
         <Link to='/parent/child-route'>Child route Absolute</Link>
         <br /> */}
-        <a href='http://localhost:3000/routing'>Routing Anchor tag</a>
-
-      </section>
