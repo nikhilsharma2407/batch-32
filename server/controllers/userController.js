@@ -123,4 +123,19 @@ const removeFriend = async (req, res, next) => {
     }
 }
 
-module.exports = { signup, login, loginWithCookie, resetPassword, addFriend, removeFriend }
+/**
+ * 
+ * @param {Request} req 
+ * @param {Response} res 
+ * @param {NextFunction} next 
+ */
+ const logout = async (req, res, next) => {
+    try {
+        res.clearCookie('token');
+        res.send(responseCreator('User logged out successfully!!!'));
+    } catch (error) {
+        next(error)
+    }
+}
+
+module.exports = { signup, login, loginWithCookie, resetPassword, addFriend, removeFriend, logout }

@@ -1,11 +1,17 @@
 import React from 'react'
 import { Button, Card, Col } from 'react-bootstrap';
 import { addFriendActionCreator, removeFriendActionCreator } from '../reducers/userReducer';
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import "./style.css"
+import { useNavigate } from 'react-router-dom';
+
+
 function User(props) {
 
     const dispatch = useDispatch();
+    const { username } = useSelector(state => state);
+
+    const navigate = useNavigate();
 
     // console.log(props);
     const { userData: { firstName, lastName, title, picture, id }, isFriend } = props;
@@ -16,7 +22,13 @@ function User(props) {
         dispatch(removeFriendActionCreator({ id, name: `${firstName} ${lastName}` }))
     }
     const addFriend = () => {
-        dispatch(addFriendActionCreator({ id, name: `${firstName} ${lastName}` }))
+        if (username) {
+            dispatch(addFriendActionCreator({ id, name: `${firstName} ${lastName}` }))
+        } else {
+            // navigate to login page
+            navigate('/login', { state: { from: '/' } });
+
+        }
     }
 
     return (

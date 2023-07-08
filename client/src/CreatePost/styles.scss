@@ -1,0 +1,57 @@
+.post-container {
+    margin: 10px 15px;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: grey 3px 3px 5px 1px;
+    
+    &__input {
+        display: flex;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #9e937e;
+
+        input{
+            flex: 1 1;
+            display: flex;
+            border-radius: 20px;
+            padding: 15px;
+            background-color: #eaeced;
+            border: none;
+            outline: none;
+        }
+
+        input:first-child{
+            flex: 2;
+            margin-right: 5px;
+        }
+        
+
+    }
+
+    &__button{
+        display: flex;
+        margin-top: 20px;
+        
+        button{
+            border-radius: 15px;
+        }
+
+        >div{
+            display: flex;
+            margin-left: 10px;
+            align-items: flex-end;
+            padding: 5px;
+
+            svg{
+                height: 35px;
+                width: 35px;
+                margin-right: 5px;
+            }
+        }
+
+        >div:hover{
+            cursor: pointer;
+            background-color: #eaeced;
+            border-radius: 15px;
+        }
+    }
+}

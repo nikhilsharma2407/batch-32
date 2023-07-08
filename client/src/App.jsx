@@ -14,6 +14,8 @@ import Counter from './Counter';
 import { useDispatch } from "react-redux"
 import { cookieLoginActionCreator } from './reducers/userReducer';
 import Toast from './Toast';
+import Loader from './Loader';
+import CreatePost from './CreatePost';
 
 function App() {
   const [showComponent, setShowComponent] = useState(false);
@@ -28,6 +30,7 @@ function App() {
     <BrowserRouter>
       <MyNavBar />
       <Toast />
+      <Loader />
       <Routes>
         <Route path='' element={<Users />} />
         <Route path='/flex' element={<Flexbox />} />
@@ -35,6 +38,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/counter' element={<Counter />} />
+        <Route path='/post' element={<CreatePost />} />
 
         {/* Nested Routing */}
         {/* <Route path='/parent/child-route1' element={<ComponentA />} />

@@ -1,24 +1,35 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Container, Row, Col, Card } from 'react-bootstrap'
-import { Link } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { loginAPI } from '../apiUtils';
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import './style.scss'
 import { loginActionCreator, resetPasswordActionCreator } from '../reducers/userReducer';
 
 function Login() {
 
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
+  const { state } = useLocation()
+  const { name } = useSelector(state => state);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const [otp, setOtp] = useState("");
   const [showResetForm, setshowResetForm] = useState(false);
+
+  useEffect(() => {
+    if (name) {
+      // go-back in history
+      //   navigate(-1);
+      console.log({ state });
+      navigate('/');
+    }
+  }, [name])
 
 
   const login = () => {
@@ -28,7 +39,7 @@ function Login() {
     dispatch(loginActionCreator(payload))
   }
 
-  const resetPassword = ()=>{
+  const resetPassword = () => {
     const payload = { username, password, otp };
     dispatch(resetPasswordActionCreator(payload))
   }

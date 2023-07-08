@@ -8,6 +8,7 @@ const ENDPOINTS = {
     ADD_FRIEND: '/user/addFriend',
     REMOVE_FRIEND: '/user/removeFriend',
     RESET:'user/reset',
+    LOGOUT:'user/logout'
 }
 
 
@@ -33,4 +34,8 @@ export const removeFriendAPI = (payload) => {
 
 export const resetPasswordApi = (payload)=>{
     return instance.patch(ENDPOINTS.RESET,payload);
+}
+
+export const logoutApi = ()=>{
+    return instance.get(ENDPOINTS.LOGOUT);
 }
