@@ -28,7 +28,7 @@ const loadingActionCreator = (payload = false) => {
     return { type: ACTIONS.LOADING, payload }
 }
 
-const asyncActionCreator = (type, apiHelper, apiPayload) => {
+const asyncActionCreator = (type, apiHelper, apiPayload,callback=()=>{}) => {
     return async (dispatch) => {
         try {
             dispatch(messageActionCreator())
@@ -36,9 +36,10 @@ const asyncActionCreator = (type, apiHelper, apiPayload) => {
             const { data } = await apiHelper(apiPayload);
             console.log(data);
             dispatch({ type, payload: data })
+            callback()
         } catch (error) {
-            console.error(error.response.data);
-            dispatch(messageActionCreator(error.response.data))
+            console.error(error?.response?.data);
+            dispatch(messageActionCreator(error?.response?.data))
         } finally {
             dispatch(loadingActionCreator(false));
         }
@@ -100,7 +101,7 @@ export const removeFriendActionCreator = (apiPayload) => {
     return asyncActionCreator(ACTIONS.REMOVE_FRIEND,removeFriendAPI,apiPayload);
 }
 
-export const resetPasswordActionCreator = (apiPayload) => {
+export const resetPasswordActionCreator = (apiPayload,callback) => {
     // return async (dispatch) => {
     //     try {
     //         const { data } = await resetPasswordApi(apiPayload);
@@ -110,7 +111,7 @@ export const resetPasswordActionCreator = (apiPayload) => {
     //         dispatch(errorActionCreator(error.response.data))
     //     }
     // }
-    return asyncActionCreator(ACTIONS.RESET_PASSWORD,resetPasswordApi,apiPayload);
+    return asyncActionCreator(ACTIONS.RESET_PASSWORD,resetPasswordApi,apiPayload,callback);
 
 }
 

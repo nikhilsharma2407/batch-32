@@ -41,7 +41,8 @@ function Login() {
 
   const resetPassword = () => {
     const payload = { username, password, otp };
-    dispatch(resetPasswordActionCreator(payload))
+    dispatch(resetPasswordActionCreator(payload,()=>setshowResetForm(false)));
+    
   }
   return (
     <Container fluid>

@@ -59,7 +59,7 @@ function Signup() {
                       width: "200px",
                       alignSelf: "center"
                     }} />
-                    <Button variant='outline-primary' as={Link} to='/path/login'>
+                    <Button variant='outline-primary' as={Link} to='/login'>
                       Proceed to Login
                     </Button>
                   </div>

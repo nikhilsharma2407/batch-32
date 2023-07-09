@@ -1,0 +1,608 @@
+
+use('test');
+
+const postData = [
+  {
+    image: 'https://img.dummyapi.io/photo-1564694202779-bc908c327862.jpg',
+    likes: 43,
+    text: 'adult Labrador retriever',
+    date: '2020-05-24T14:53:17.598Z',
+    owner: {
+      name: 'Emre Asikoglu',
+      _id: '60d0fe4f5311236168a109d0',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/23.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1510414696678-2415ad8474aa.jpg',
+    likes: 31,
+    text: 'ice caves in the wild landscape photo of ice near ...',
+    date: '2020-05-24T07:44:17.738Z',
+    owner: {
+      name: 'Evan Carlson',
+      _id: '60d0fe4f5311236168a109d2',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/80.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1515376721779-7db6951da88d.jpg',
+    likes: 16,
+    text: '@adventure.yuki frozen grass short-coated black do...',
+    date: '2020-05-24T05:44:55.297Z',
+    owner: {
+      name: 'Sara Andersen',
+      _id: '60d0fe4f5311236168a109ca',
+      profilePicture: 'https://randomuser.me/api/portraits/women/58.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1581804928342-4e3405e39c91.jpg',
+    likes: 7,
+    text: 'Hiking with my dog in the woods. black labrador re...',
+    date: '2020-05-23T22:56:11.424Z',
+    owner: {
+      name: 'Kent Brewer',
+      _id: '60d0fe4f5311236168a109d1',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/52.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1574457547512-5b1646994eea.jpg',
+    likes: 28,
+    text: 'Two boys hug their dogs in a leaf pile in the fall...',
+    date: '2020-05-23T18:52:32.613Z',
+    owner: {
+      name: 'Sara Andersen',
+      _id: '60d0fe4f5311236168a109ca',
+      profilePicture: 'https://randomuser.me/api/portraits/women/58.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1498534928137-473daa67f5c4.jpg',
+    likes: 18,
+    text: 'Bone salt and pepper schnauzer puppy',
+    date: '2020-05-23T14:42:22.808Z',
+    owner: {
+      name: 'Adina Barbosa',
+      _id: '60d0fe4f5311236168a109cc',
+      profilePicture: 'https://randomuser.me/api/portraits/med/women/28.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1576707064479-3139e7e8aace.jpg',
+    likes: 19,
+    text: 'Sleeping dogs lie two dogs lying on black textile',
+    date: '2020-05-23T12:55:22.576Z',
+    owner: {
+      name: 'Edita Vestering',
+      _id: '60d0fe4f5311236168a109cb',
+      profilePicture: 'https://randomuser.me/api/portraits/med/women/89.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1500879747858-bb1845b61beb.jpg',
+    likes: 242,
+    text: 'Dog in a forest at sunset dog in forest with sun r...',
+    date: '2020-05-22T22:27:12.912Z',
+    owner: {
+      name: 'Friedrich-Karl Brand',
+      _id: '60d0fe4f5311236168a109d3',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/7.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1568572933382-74d440642117.jpg',
+    likes: 79,
+    text: 'black and white Husky',
+    date: '2020-05-22T20:05:03.653Z',
+    owner: {
+      name: 'Evan Carlson',
+      _id: '60d0fe4f5311236168a109d2',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/80.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1579562243430-4732bcb09d91.jpg',
+    likes: 17,
+    text: 'Milo durmiendo después de un largo día de jugar en...',
+    date: '2020-05-22T07:50:38.093Z',
+    owner: {
+      name: 'Adina Barbosa',
+      _id: '60d0fe4f5311236168a109cc',
+      profilePicture: 'https://randomuser.me/api/portraits/med/women/28.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1568480541687-16c2f73eea4c.jpg',
+    likes: 12,
+    text: 'Gratitude short-coated tan dog on seashore',
+    date: '2020-05-22T06:33:02.593Z',
+    owner: {
+      name: 'Edita Vestering',
+      _id: '60d0fe4f5311236168a109cb',
+      profilePicture: 'https://randomuser.me/api/portraits/med/women/89.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1517884467367-ac2e21e46d0b.jpg',
+    likes: 43,
+    text: '@adventure.yuki peekaboo adult short-coated black ...',
+    date: '2020-05-22T03:10:54.820Z',
+    owner: {
+      name: 'Sara Andersen',
+      _id: '60d0fe4f5311236168a109ca',
+      profilePicture: 'https://randomuser.me/api/portraits/women/58.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1548658146-f142deadf8f7.jpg',
+    likes: 92,
+    text: 'front view of black and white puppy sitting on bro...',
+    date: '2020-05-21T22:15:26.266Z',
+    owner: {
+      name: 'Kent Brewer',
+      _id: '60d0fe4f5311236168a109d1',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/52.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1535008652995-e95986556e32.jpg',
+    likes: 15,
+    text: 'Random man walking with his dogs man and dogs on t...',
+    date: '2020-05-21T15:53:26.275Z',
+    owner: {
+      name: 'Kent Brewer',
+      _id: '60d0fe4f5311236168a109d1',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/52.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1580734075803-ac9cdb54fb03.jpg',
+    likes: 3,
+    text: 'Majestic looking dog on a lake white and brown sho...',
+    date: '2020-05-21T15:15:02.703Z',
+    owner: {
+      name: 'Kent Brewer',
+      _id: '60d0fe4f5311236168a109d1',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/52.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1558556249-076e42967a24.jpg',
+    likes: 27,
+    text: 'two puppies next to each other',
+    date: '2020-05-21T07:03:58.248Z',
+    owner: {
+      name: 'Roberto Vega',
+      _id: '60d0fe4f5311236168a109cd',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/25.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1556526588-a0bd9b5a42c3.jpg',
+    likes: 54,
+    text: 'two white dogs',
+    date: '2020-05-21T02:10:33.421Z',
+    owner: {
+      name: 'Carolina Lima',
+      _id: '60d0fe4f5311236168a109cf',
+      profilePicture: 'https://randomuser.me/api/portraits/med/women/5.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1575495679620-2ff225c75d5a.jpg',
+    likes: 20,
+    text: 'A picture of my golden doodle, Yogi Bear white dog',
+    date: '2020-05-20T21:49:33.321Z',
+    owner: {
+      name: 'Emre Asikoglu',
+      _id: '60d0fe4f5311236168a109d0',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/23.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1549937334-e94f33e69787.jpg',
+    likes: 5,
+    text: 'long-coated brown dog',
+    date: '2020-05-20T21:00:40.371Z',
+    owner: {
+      name: 'Emre Asikoglu',
+      _id: '60d0fe4f5311236168a109d0',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/23.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1564849444446-f876dcef378e.jpg',
+    likes: 40,
+    text: 'A feral cat short-fur gray and orange cat on green...',
+    date: '2020-05-20T18:51:23.478Z',
+    owner: {
+      name: 'Kent Brewer',
+      _id: '60d0fe4f5311236168a109d1',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/52.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1549029555-5074848335d1.jpg',
+    likes: 14,
+    text: 'selective focus photography of brown dog lying on ...',
+    date: '2020-05-20T07:57:54.421Z',
+    owner: {
+      name: 'Adina Barbosa',
+      _id: '60d0fe4f5311236168a109cc',
+      profilePicture: 'https://randomuser.me/api/portraits/med/women/28.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1504208434309-cb69f4fe52b0.jpg',
+    likes: 2225,
+    text: 'Beautiful dog in most photographed place in Canada...',
+    date: '2020-05-20T04:57:33.445Z',
+    owner: {
+      name: 'Evan Carlson',
+      _id: '60d0fe4f5311236168a109d2',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/80.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1557976606-d068b9719915.jpg',
+    likes: 41,
+    text: 'brown and white short coated puppy lying on grass ...',
+    date: '2020-05-19T22:56:15.213Z',
+    owner: {
+      name: 'Edita Vestering',
+      _id: '60d0fe4f5311236168a109cb',
+      profilePicture: 'https://randomuser.me/api/portraits/med/women/89.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1546975554-31053113e977.jpg',
+    likes: 77,
+    text: 'white dog on ground',
+    date: '2020-05-19T08:26:29.436Z',
+    owner: {
+      name: 'Friedrich-Karl Brand',
+      _id: '60d0fe4f5311236168a109d3',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/7.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1577849304422-d019fdd6f29f.jpg',
+    likes: 25,
+    text: 'Dogs black and brown Yorkshire Terrier',
+    date: '2020-05-19T02:55:23.015Z',
+    owner: {
+      name: 'Roberto Vega',
+      _id: '60d0fe4f5311236168a109cd',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/25.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1556877986-d40833ec88b4.jpg',
+    likes: 6,
+    text: 'Being a proud owner of a frenchie... That means lo...',
+    date: '2020-05-19T02:16:25.689Z',
+    owner: {
+      name: 'Sara Andersen',
+      _id: '60d0fe4f5311236168a109ca',
+      profilePicture: 'https://randomuser.me/api/portraits/women/58.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1562221440-aba53beefed2.jpg',
+    likes: 45,
+    text: "person touching dog's head",
+    date: '2020-05-18T21:14:50.181Z',
+    owner: {
+      name: 'Roberto Vega',
+      _id: '60d0fe4f5311236168a109cd',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/25.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1583381872273-a4a9e8d157ab.jpg',
+    likes: 6,
+    text: 'My dog Cody looking super excited.  brown short co...',
+    date: '2020-05-18T15:52:46.051Z',
+    owner: {
+      name: 'Kent Brewer',
+      _id: '60d0fe4f5311236168a109d1',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/52.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1582835173528-d2d1ecb87ab6.jpg',
+    likes: 8,
+    text: 'white black and brown long coated small dog',
+    date: '2020-05-18T15:43:41.918Z',
+    owner: {
+      name: 'Evan Carlson',
+      _id: '60d0fe4f5311236168a109d2',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/80.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1536809188428-e8ecf663d0be.jpg',
+    likes: 149,
+    text: 'Sun Bathing adult gold golden retriever lying on f...',
+    date: '2020-05-17T20:54:33.648Z',
+    owner: {
+      name: 'Kent Brewer',
+      _id: '60d0fe4f5311236168a109d1',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/52.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1569796922509-d2846284929e.jpg',
+    likes: 29,
+    text: 'close-up photo of white English Bulldog',
+    date: '2020-05-17T16:08:18.433Z',
+    owner: {
+      name: 'Rudi Droste',
+      _id: '60d0fe4f5311236168a109ce',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/83.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1575852495205-c3dc13f32d8c.jpg',
+    likes: 9,
+    text: 'Engagement photos at the north campus at Universit...',
+    date: '2020-05-17T15:32:45.012Z',
+    owner: {
+      name: 'Evan Carlson',
+      _id: '60d0fe4f5311236168a109d2',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/80.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1548658166-136d9f6a7e76.jpg',
+    likes: 501,
+    text: 'yawning white and brown short coated puppy',
+    date: '2020-05-17T10:43:24.011Z',
+    owner: {
+      name: 'Friedrich-Karl Brand',
+      _id: '60d0fe4f5311236168a109d3',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/7.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1583336663277-620dc1996580.jpg',
+    likes: 16,
+    text: 'Hypebeasts brown and white dog wearing pink and bl...',
+    date: '2020-05-17T04:54:41.680Z',
+    owner: {
+      name: 'Adina Barbosa',
+      _id: '60d0fe4f5311236168a109cc',
+      profilePicture: 'https://randomuser.me/api/portraits/med/women/28.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1477973770766-6228305816df.jpg',
+    likes: 462,
+    text: 'short-coated gray dog near green leafed plants',
+    date: '2020-05-16T17:50:31.367Z',
+    owner: {
+      name: 'Emre Asikoglu',
+      _id: '60d0fe4f5311236168a109d0',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/23.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1547480643-88ac656b7cfc.jpg',
+    likes: 21,
+    text: 'dog prawn laying on concrete outside during daytim...',
+    date: '2020-05-16T07:29:53.796Z',
+    owner: {
+      name: 'Roberto Vega',
+      _id: '60d0fe4f5311236168a109cd',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/25.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1527973025938-d60fdcbc9ece.jpg',
+    likes: 35,
+    text: 'A Walk in the Beach two black and tan dog on beach',
+    date: '2020-05-16T04:29:33.975Z',
+    owner: {
+      name: 'Emre Asikoglu',
+      _id: '60d0fe4f5311236168a109d0',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/23.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1579178460072-07b6cebedf5f.jpg',
+    likes: 22,
+    text: 'Alaskan Malamute black and white wolf',
+    date: '2020-05-16T02:42:34.573Z',
+    owner: {
+      name: 'Emre Asikoglu',
+      _id: '60d0fe4f5311236168a109d0',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/23.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1590178534645-de019aa7255e.jpg',
+    likes: 0,
+    text: 'Two dogs playing on the grass with a plastic bottl...',
+    date: '2020-05-16T02:17:38.636Z',
+    owner: {
+      name: 'Emre Asikoglu',
+      _id: '60d0fe4f5311236168a109d0',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/23.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1550206574-96bbd259b685.jpg',
+    likes: 76,
+    text: 'This is Ruby. I heard somewhere that dogs get a su...',
+    date: '2020-05-15T06:42:12.347Z',
+    owner: {
+      name: 'Sara Andersen',
+      _id: '60d0fe4f5311236168a109ca',
+      profilePicture: 'https://randomuser.me/api/portraits/women/58.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1524675772159-ea8ff66a947d.jpg',
+    likes: 64,
+    text: 'I took this photo during my trip in Swedish Laplan...',
+    date: '2020-05-15T04:11:48.350Z',
+    owner: {
+      name: 'Carolina Lima',
+      _id: '60d0fe4f5311236168a109cf',
+      profilePicture: 'https://randomuser.me/api/portraits/med/women/5.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1589469526983-0887ebe10072.jpg',
+    likes: 2,
+    text: 'Cooling off in the fountain white and black short ...',
+    date: '2020-05-14T16:28:10.135Z',
+    owner: {
+      name: 'Roberto Vega',
+      _id: '60d0fe4f5311236168a109cd',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/25.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1587463272361-565200f82b33.jpg',
+    likes: 149,
+    text: 'Millie, the Cocker Spaniel self-isolating during t...',
+    date: '2020-05-14T14:53:11.654Z',
+    owner: {
+      name: 'Emre Asikoglu',
+      _id: '60d0fe4f5311236168a109d0',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/23.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1556955163-2ba8c049db4a.jpg',
+    likes: 33,
+    text: 'adult long-coated white and black dog',
+    date: '2020-05-14T14:41:35.893Z',
+    owner: {
+      name: 'Edita Vestering',
+      _id: '60d0fe4f5311236168a109cb',
+      profilePicture: 'https://randomuser.me/api/portraits/med/women/89.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1570944191904-4b0be46fe39a.jpg',
+    likes: 13,
+    text: 'Border Collie Pup 6 weeks old has one blue eye. So...',
+    date: '2020-05-14T11:53:02.103Z',
+    owner: {
+      name: 'Adina Barbosa',
+      _id: '60d0fe4f5311236168a109cc',
+      profilePicture: 'https://randomuser.me/api/portraits/med/women/28.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1546772324-331b229106a4.jpg',
+    likes: 61,
+    text: 'Can I have something to eat? close view of black a...',
+    date: '2020-05-14T07:50:25.770Z',
+    owner: {
+      name: 'Roberto Vega',
+      _id: '60d0fe4f5311236168a109cd',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/25.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1552248879-2b6b2a23c11a.jpg',
+    likes: 82,
+    text: 'shallow focus photo of brown dog running on body o...',
+    date: '2020-05-14T06:34:02.980Z',
+    owner: {
+      name: 'Carolina Lima',
+      _id: '60d0fe4f5311236168a109cf',
+      profilePicture: 'https://randomuser.me/api/portraits/med/women/5.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1512251275231-63e355f3d028.jpg',
+    likes: 42,
+    text: 'short-coated black dog',
+    date: '2020-05-14T05:04:09.702Z',
+    owner: {
+      name: 'Friedrich-Karl Brand',
+      _id: '60d0fe4f5311236168a109d3',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/7.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1516466723877-e4ec1d736c8a.jpg',
+    likes: 746,
+    text: 'Its cold out there scenery of aurora',
+    date: '2020-05-13T23:33:08.447Z',
+    owner: {
+      name: 'Emre Asikoglu',
+      _id: '60d0fe4f5311236168a109d0',
+      profilePicture: 'https://randomuser.me/api/portraits/med/men/23.jpg'
+    },
+    isLiked: false
+  },
+  {
+    image: 'https://img.dummyapi.io/photo-1457473075527-b0db85c08e66.jpg',
+    likes: 297,
+    text: 'long-coated brown dog on white boat',
+    date: '2020-05-13T06:37:11.359Z',
+    owner: {
+      name: 'Sara Andersen',
+      _id: '60d0fe4f5311236168a109ca',
+      profilePicture: 'https://randomuser.me/api/portraits/women/58.jpg'
+    },
+    isLiked: false
+  }
+]
+
+db.posts.drop();
+db.posts.insertMany(postData)

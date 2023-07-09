@@ -8,7 +8,7 @@ const promise = Promise.resolve("api data");
 //     });
 // });
 
-const fn = async()=>{
+const fn = async () => {
     const data = await promise;
     // console.log(data);
     return data
@@ -16,7 +16,7 @@ const fn = async()=>{
     // const data2 = await apiCall(data);
     // console.log(data2);
 }
-console.log(fn()) 
+console.log(fn())
 
 // {} -> brackets
 // () -> parenthesis
@@ -42,3 +42,21 @@ console.log(fn())
         {/* <Link to='parent'>Routing</Link>
         <Link to='/parent/child-route'>Child route Absolute</Link>
         <br /> */}
+
+const friendList = [
+    "60d0fe4f5311236168a109ca",
+    "60d0fe4f5311236168a109cb"
+];
+
+result = [
+    { "owner.id": "60d0fe4f5311236168a109ca" },
+    { "owner.id": "60d0fe4f5311236168a109cb" },
+];
+
+const query = friendList.map(id => {
+    return { "owner.id" : id }
+});
+
+console.log(query);
+
+
