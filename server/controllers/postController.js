@@ -59,11 +59,14 @@ const deletePost = async (req, res, next) => {
         const { id: postId } = req.params;
         const { _id } = res.locals.user;
         const post = await PostModel.getUserPosts(_id, postId);
+        // console.clear();
+        // console.log({ post }, _id.toString());
+        // console.log(post.owner._id === _id.toString());
 
-        if (post.owner._id === _id) {
-            const data = await PostModel.deletePost(id);
+        if (post.owner._id === _id.toString()) {
+            const data = await PostModel.deletePost(postId);
             if (data) {
-                res.send('Post deleted successfully!!!');
+                res.send(responseCreator('Post deleted successfully!!!',data) );
             }
         } else {
             errorCreator('You can only delete your own posts', 403)

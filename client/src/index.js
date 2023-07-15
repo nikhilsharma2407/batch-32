@@ -12,7 +12,7 @@ import thunk from 'redux-thunk';
 import { userReducer } from './reducers/userReducer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const store = createStore(userReducer, applyMiddleware(logger, thunk));
+const store = createStore(userReducer, applyMiddleware( thunk));
 
 root.render(
   <Provider store={store}>

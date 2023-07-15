@@ -16,6 +16,7 @@ import { cookieLoginActionCreator } from './reducers/userReducer';
 import Toast from './Toast';
 import Loader from './Loader';
 import CreatePost from './CreatePost';
+import Home from './Home';
 
 function App() {
   const [showComponent, setShowComponent] = useState(false);
@@ -32,7 +33,8 @@ function App() {
       <Toast />
       <Loader />
       <Routes>
-        <Route path='' element={<Users />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/users' element={<Users />} />
         <Route path='/flex' element={<Flexbox />} />
         <Route path='/routing' element={<Routing />} />
         <Route path='/login' element={<Login />} />

@@ -25,13 +25,14 @@ postSchema.statics.createPost = async (postData) => {
 }
 
 postSchema.statics.getPosts = async (userId, friendList) => {
-    const query = [...friendList, userId].map(id => {
+    const query = [friendList].map(id => {
         return { "owner._id": id }
     });
     const data = await PostModel.find({
         $or: query
     });
-    return data;
+    const userPosts = await PostModel.find({"owner._id":userId});
+    return [...userPosts,...data];
 }
 
 postSchema.statics.getUserPosts = async (userId, postId) => {

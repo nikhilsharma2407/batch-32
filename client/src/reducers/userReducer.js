@@ -20,7 +20,7 @@ const ACTIONS = {
     LOGOUT: 'LOGOUT',
 }
 
-const messageActionCreator = (payload = '') => {
+export const messageActionCreator = (payload = '') => {
     return { type: ACTIONS.MESSAGE, payload }
 }
 

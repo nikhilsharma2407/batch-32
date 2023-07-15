@@ -1,0 +1,52 @@
+.view-post-container {
+    margin: 10px 15px;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: grey 3px px 5px 1px;
+    
+    &__user{
+        display: flex;
+        margin-bottom: 20px;
+        &-info{
+            margin-left: 10px;
+            font-weight: 600;
+        }
+    }
+
+    &__data{
+
+        img{
+            margin-top: 15px;
+            height: 400px;
+        }
+    }
+
+    &__button{
+        display: flex;
+        margin-top: 20px;
+        
+        button{
+            border-radius: 15px;
+        }
+
+        >div{
+            display: flex;
+            margin-left: 10px;
+            align-items: flex-end;
+            padding: 5px;
+
+            svg{
+                height: 35px;
+                width: 35px;
+                margin-right: 5px;
+            }
+        }
+
+        >div:hover{
+            cursor: pointer;
+            background-color: #eaeced;
+            border-radius: 15px;
+        }
+    }
+    
+}
