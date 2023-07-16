@@ -3,8 +3,9 @@ const express = require('express')
 const cors = require('cors');
 const path = require('path');
 const app = express();
-
 const dotenv = require('dotenv');
+dotenv.config();
+
 
 const requestLogger = require('./utils/requestLogger');
 
@@ -17,6 +18,7 @@ const cookieParser = require('cookie-parser');
 // connect to DB 
 const db = require('./dbConnection');
 const authController = require('./controllers/authController');
+
 
 const port = process.env.PORT
 
