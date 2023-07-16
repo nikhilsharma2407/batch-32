@@ -4,18 +4,8 @@ import Post from '../Post';
 
 
 
-function Posts() {
+function Posts({getPosts, postData, setPostData, apiFnWrapper}) {
 
-    const [postData, setPostData] = useState([])
-    const getPosts = async () => {
-        try {
-            const { data } = await (await POST_API.getPostAPI()).data;
-            setPostData(data)
-            console.log(data);
-        } catch (error) {
-            console.log(error);
-        }
-    }
     useEffect(() => {
         getPosts();
     }, []);
@@ -23,7 +13,7 @@ function Posts() {
 
     const likePost = async (id) => {
         try {
-            const { data: updatedPost } = await (await POST_API.likePostAPI(id)).data;
+            const { data: updatedPost } = await (apiFnWrapper(POST_API.likePostAPI,id));
 
             const updatedData = postData.map(data => {
                 if (data._id === updatedPost._id) {
@@ -39,7 +29,7 @@ function Posts() {
 
     const deletePost = async (id) => {
         try {
-            const { data:deletedPost } =  await (await POST_API.deletePostAPI(id)).data;
+            const { data:deletedPost } =  await(apiFnWrapper(POST_API.deletePostAPI,id));
             console.log(deletedPost);
             const updatedData = postData.filter(data => data._id !== deletedPost._id);
             setPostData(updatedData);

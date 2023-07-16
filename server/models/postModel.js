@@ -25,14 +25,14 @@ postSchema.statics.createPost = async (postData) => {
 }
 
 postSchema.statics.getPosts = async (userId, friendList) => {
-    const query = [friendList].map(id => {
+    const query = friendList.map(id => {
         return { "owner._id": id }
     });
-    const data = await PostModel.find({
+    const friendsPosts = await PostModel.find({
         $or: query
     });
     const userPosts = await PostModel.find({"owner._id":userId});
-    return [...userPosts,...data];
+    return [...userPosts,...friendsPosts];
 }
 
 postSchema.statics.getUserPosts = async (userId, postId) => {
@@ -49,7 +49,7 @@ postSchema.statics.deletePost = async (id) => {
 }
 
 postSchema.statics.like = async (id) => {
-    const { isLiked } = (await PostModel.findById(id)).toObject();
+    const { isLiked } = (await PostModel.findById(id))?.toObject();
     const count = isLiked ? -1 : 1;
 
     const data = await PostModel.findByIdAndUpdate(id, {
