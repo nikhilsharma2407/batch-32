@@ -2,7 +2,9 @@
 const express = require('express')
 const cors = require('cors');
 const path = require('path');
-const app = express()
+const app = express();
+
+const dotenv = require('dotenv');
 
 const requestLogger = require('./utils/requestLogger');
 
@@ -16,7 +18,7 @@ const cookieParser = require('cookie-parser');
 const db = require('./dbConnection');
 const authController = require('./controllers/authController');
 
-const port = 4000
+const port = process.env.PORT
 
 // This middleware will allow us to read the body of the contents shared with req
 app.use(express.json());
