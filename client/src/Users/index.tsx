@@ -3,15 +3,26 @@ import axios from "axios"
 import User from '../User';
 import { Container, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+import IUser from './IUser';
+
+
+interface IResponse {
+    data: IUser[]
+}
+
 function Users() {
     const URL = 'https://dummyapi.io/data/v1/user?limit=10';
-    const [users, setUsers] = useState([])
+    const [users, setUsers] = useState<IUser[]>([])
 
-    const { friendList } = useSelector(state => state)
+
+    const { friendList } = useSelector<any,any>(state => state)
+
+
+
 
     useEffect(() => {
         (async () => {
-            const { data } = (await axios.get(URL, {
+            const { data } = (await axios.get<IResponse>(URL, {
                 headers: { "app-id": '6404aa48e04d670642b100c6' }
             })).data
             console.log(data);
@@ -35,7 +46,10 @@ function Users() {
             <Container fluid>
                 <Row>
                     {users.map(user => {
-                        return <User userData={user} key={user.id} isFriend={friendList.includes(user.id)} />
+                        // return <User userData={user} key={user.id} isFriend={friendList.includes(user.id)} />
+                        return <User userData={user} 
+                        isFriend ={friendList.includes(user.id)} 
+                        key={user.id} />
                     })}
                 </Row>
             </Container>

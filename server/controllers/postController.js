@@ -23,6 +23,9 @@ const getPosts = async (req, res, next) => {
         // getting this data from logged in session via Auth middleware
         const { _id, friendList } = res.locals.user;
         const data = await PostModel.getPosts(_id, friendList);
+        if(!data.legth){
+            errorCreator('No posts found!!!', 404);
+        }
         res.send(responseCreator('Posts fetched', data))
     } catch (error) {
         next(error)

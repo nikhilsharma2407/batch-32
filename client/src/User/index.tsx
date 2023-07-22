@@ -4,17 +4,23 @@ import { addFriendActionCreator, removeFriendActionCreator } from '../reducers/u
 import { useDispatch, useSelector } from "react-redux"
 import "./style.css"
 import { useNavigate } from 'react-router-dom';
+import IUser from '../Users/IUser';
 
+interface IProps{
+    userData:IUser,
+    isFriend:boolean,
+}
 
-function User(props) {
+function User(props:IProps) {
 
-    const dispatch = useDispatch();
-    const { username } = useSelector(state => state);
+    const dispatch = useDispatch<any>();
+    const { username } = useSelector<any,any>(state => state);
 
     const navigate = useNavigate();
 
     // console.log(props);
-    const { userData: { firstName, lastName, title, picture, id }, isFriend } = props;
+    // const { userData: { firstName, lastName, title, picture, id }, isFriend } = props;
+    const {isFriend, userData:{id, firstName, title, lastName, picture}} = props
     // const fullName = title + ' '+firstName+' '+lastName;
     const fullName = `${title} ${firstName} ${lastName}`;
 
